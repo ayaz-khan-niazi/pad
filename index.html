@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Request Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Requestee's Information /درخواست گزار کی معلومات</h2>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="registrationNumber">Registration Number:</label>
+          <input type="text" id="registrationNumber" name="registrationNumber" class="form-control" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name/نام:</label>
+          <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="fatherName">Name Husbands/Fathers/والد/شوہر کا نام:</label>
+          <input type="text" id="fatherName" name="fatherName" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="emiratesID">Number ID Emirates/امارات آئی ڈی نمبر:</label>
+          <input type="text" id="emiratesID" name="emiratesID" class="form-control" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="expiryDate">Date Expiry ID Emirates/امارات آئی ڈی کی میعاد ختم ہونے کی تاریخ:</label>
+          <input type="date" id="expiryDate" name="expiryDate" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="cityPakistan">What city in Pakistan are you from/شہر/پاتا کا پاکستان:</label>
+          <input type="text" id="cityPakistan" name="cityPakistan" class="form-control" required>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="mobileNumber">Mobile Number/نمبر موبائل:</label>
+          <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" required>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="monthlyIncome">Monthly Income/آمدنی ماہانہ:</label>
+          <input type="text" id="monthlyIncome" name="monthlyIncome" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="uaeResidence">How long have you lived in The UAE/آپ متحدہ عرب امارات میں کتنے عرصے سے رہ رہے ہیں:</label>
+          <input type="text" id="uaeResidence" name="uaeResidence" class="form-control" required>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="cityUAE">What city do you live in UAE/شہر/پاتا کا امارات عرب متحدہ:</label>
+          <input type="text" id="cityUAE" name="cityUAE" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Do you have Insurance? / کیا آپ کے پاس انشورنس ہے؟</label>
+        <div class="form-check">
+          <input type="checkbox" id="insuranceYes" name="insurance" value="Yes" class="form-check-input">
+          <label for="insuranceYes" class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="insuranceNo" name="insurance" value="No" class="form-check-input">
+          <label for="insuranceNo" class="form-check-label">No</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Does Your family live with you? / کیا آپکی فیملی آپ کے ساتھ مقیم ہے؟</label>
+        <div class="form-check">
+          <input type="checkbox" id="familyYes" name="family" value="Yes" class="form-check-input">
+          <label for="familyYes" class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="familyNo" name="family" value="No" class="form-check-input">
+          <label for="familyNo" class="form-check-label">No</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="membershipNumber">If yes, what is your membership number? / اگرہاں توممبرشپ نمبر؟</label>
+        <input type="text" id="membershipNumber" name="membershipNumber" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="associationMember">Are you a member of Pakistan Association? / کیا آپ پاکستان ایسوسی ایشن کے ممبر ہے؟</label>
+        <div class="form-check">
+          <input type="checkbox" id="associationYes" name="associationMember" value="Yes" class="form-check-input">
+          <label for="associationYes" class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="associationNo" name="associationMember" value="No" class="form-check-input">
+          <label for="associationNo" class="form-check-label">No</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="issueDetails">Discription/Details of your Issue / تفصیل کی ضرورت:</label>
+        <textarea id="issueDetails" name="issueDetails" class="form-control" rows="5"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="zakaahEligible">I confess that I am entitled/Eligible for zakaah. / میں اقرار کرتا / کرتی ہو کے میں زکوۃ کا / کی مستحق ہو:</label>
+        <div class="form-check">
+          <input type="checkbox" id="zakaahYes" name="zakaahEligible" value="Yes" class="form-check-input">
+          <label for="zakaahYes" class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="zakaahNo" name="zakaahEligible" value="No" class="form-check-input">
+          <label for="zakaahNo" class="form-check-label">No</label>
+        </div>
+      </div>
+
+      <p>Kindly submit your passport, Emirates ID and Visa Copy, and all other documents related to your case.</p>
+      <p>پاسپورٹ ، ویزا کاپی ، یمیراتیس آئی ڈی اور آپکی مسئلے سے مسالک داستاویزاات جمع کرائیں</p>
+
+      <hr>
+
+      <h3>For Office Use Only / صرف دفتر کے استعمال کے لیے</h3>
+
+      <div class="form-group">
+        <label for="committeeReport">Report/Decesion of the welfare committe / ویلفیئر کمیٹی کی رپورٹ اور سفارش:</label>
+        <textarea id="committeeReport" name="committeeReport" class="form-control" rows="5"></textarea>
+      </div>
+
+      <hr>
+
+      <h3>Record of financial help Provided / امداد کی تفصیل</h3>
+
+      <table class="table  table-bordered">
+        <thead>
+          <tr>
+            <th>Sign of welfare director<br>داستھاخ ویلفیئر ڈائریکٹر</th>
+            <th>What basis has the help been provided<br>کس مد میں مدد کی گئی ہے</th>
+            <th>Amount approved<br>منظور شدہ رقم</th>
+            <th>Date / تاریخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Table rows will be dynamically added using JavaScript -->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
