@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan Request Approval</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Loan Request Approval</h2>
+    <table id="requestTable" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Registration Number</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be dynamically added using JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for approving/rejecting request -->
+  <div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="approvalModalLabel">Loan Request Approval</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Registration Number:</strong> <span id="modalRegistrationNumber"></span></p>
+          <p><strong>Name:</strong> <span id="modalName"></span></p>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea id="comment" class="form-control" rows="5" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="approveBtn">Approve</button>
+          <button type="button" class="btn btn-danger" id="rejectBtn">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Example data for the loan requests (replace with your actual data)
+    var requests = [
+      { registrationNumber: "001", name: "John Doe", status: "Pending" },
+      { registrationNumber: "002", name: "Jane Smith", status: "Pending" },
+      { registrationNumber: "003", name: "Alice Johnson", status: "Pending" }
+    ];
+
+    // Function to dynamically populate the table with loan requests
+    function populateTable() {
+      var table = document.getElementById("requestTable");
+      var tbody = table.getElementsByTagName("tbody")[0];
+      tbody.innerHTML = ""; // Clear existing table rows
+
+      for (var i = 0; i < requests.length; i++) {
+        var request = requests[i];
+        var row = tbody.insertRow(i);
+
+        // Insert cells with request data
+        var registrationNumberCell = row.insertCell(0);
+        registrationNumberCell.innerHTML = request.registrationNumber;
+
+        var nameCell = row.insertCell(1);
+        nameCell.innerHTML = request.name;
+
+        var statusCell = row.insertCell(2);
+        statusCell.innerHTML = request.status;
+
+        var actionsCell = row.insertCell(3);
+        var approveBtn = document.createElement("button");
+        approveBtn.className = "btn btn-sm btn-success";
+        approveBtn.innerHTML = "Approve";
+        approveBtn.addEventListener("click", openApprovalModal.bind(null, request.registrationNumber, request.name, "Approved"));
+        actionsCell.appendChild(approveBtn);
+
+        var rejectBtn = document.createElement("button");
+        rejectBtn.className = "btn btn-sm btn-danger";
+        rejectBtn.innerHTML = "Reject";
+        rejectBtn.addEventListener("click", openApprovalModal.bind(null, request.registrationNumber, request.name, "Rejected"));
+        actionsCell.appendChild(rejectBtn);
+      }
+    }
+
+    // Function to open the approval modal and set request details
+    function openApprovalModal(registrationNumber, name, status) {
+      var modalRegistrationNumber = document.getElementById("modalRegistrationNumber");
+      var modalName = document.getElementById("modalName");
+      var approveBtn = document.getElementById("approveBtn");
+      var rejectBtn = document.getElementById("rejectBtn");
+
+      modalRegistrationNumber.textContent = registrationNumber;
+      modalName.textContent = name;
+
+      // Clear previous comment value
+      document.getElementById("comment").value = "";
+
+      // Update button event listeners to pass the request status
+      approveBtn.removeEventListener("click", handleApproval);
+      approveBtn.addEventListener("click", handleApproval.bind(null, registrationNumber, "Approved"));
+      rejectBtn.removeEventListener("click", handleApproval);
+      rejectBtn.addEventListener("click", handleApproval.bind(null, registrationNumber, "Rejected"));
+
+      // Show the approval modal
+      $("#approvalModal").modal("show");
+    }
+
+    // Function to handle the approval action
+    function handleApproval(registrationNumber, status) {
+      var comment = document.getElementById("comment").value;
+      if (comment.trim() === "") {
+        alert("Please provide a comment before saving.");
+        return;
+      }
+
+      // Update the request status and save the comment
+      var request = requests.find(function (r) {
+        return r.registrationNumber === registrationNumber;
+      });
+      request.status = status;
+
+      // Save the comment (you can customize this part)
+      // For now, we'll log the comment to the console
+      console.log("Request:", registrationNumber);
+      console.log("Status:", status);
+      console.log("Comment:", comment);
+
+      // Update the table to reflect the updated status
+      populateTable();
+
+      // Hide the approval modal
+      $("#approvalModal").modal("hide");
+    }
+
+    // Populate the table on page load
+    document.addEventListener("DOMContentLoaded", populateTable);
+  </script>
+</body>
+</html>
